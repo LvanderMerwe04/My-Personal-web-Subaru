@@ -28,90 +28,55 @@ body {
 
 /* ── CUSTOM CURSOR ── */
 #cursor {
-  position: fixed;
-  width: 12px; height: 12px;
-  background: var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
+  position: fixed; width: 12px; height: 12px;
+  background: var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 99999;
   transform: translate(-50%,-50%);
-  transition: transform 0.05s, width 0.2s, height 0.2s, background 0.2s;
+  transition: transform 0.05s, width 0.2s, height 0.2s;
   mix-blend-mode: difference;
 }
 #cursor-ring {
-  position: fixed;
-  width: 40px; height: 40px;
-  border: 1px solid rgba(201,168,76,0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
+  position: fixed; width: 40px; height: 40px;
+  border: 1px solid rgba(201,168,76,0.5); border-radius: 50%;
+  pointer-events: none; z-index: 99998;
   transform: translate(-50%,-50%);
-  transition: transform 0.12s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
+  transition: transform 0.12s ease-out, width 0.3s, height 0.3s;
 }
-body:hover #cursor-ring { opacity: 1; }
 
 /* ── SCANLINES ── */
 body::after {
-  content:'';
-  position:fixed; inset:0;
+  content:''; position:fixed; inset:0;
   background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.04) 2px,rgba(0,0,0,0.04) 4px);
   pointer-events:none; z-index:9000;
 }
 
-/* ── PARTICLE CANVAS ── */
-#particleCanvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.6;
-}
+/* ── PARTICLES ── */
+#particleCanvas { position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.6; }
 
 /* ── NAV ── */
 nav {
-  position: fixed; top:0; left:0; right:0; z-index:500;
+  position:fixed; top:0; left:0; right:0; z-index:500;
   display:flex; justify-content:space-between; align-items:center;
   padding:1.5rem 3rem;
   background: linear-gradient(to bottom,rgba(8,8,8,0.98),transparent);
 }
-.nav-logo {
-  font-family:'Bebas Neue',sans-serif; font-size:1.5rem;
-  letter-spacing:.2em; color:var(--gold);
-  position:relative;
-}
-.nav-logo::after {
-  content:''; position:absolute; bottom:-4px; left:0;
-  width:100%; height:1px; background:var(--gold);
-  transform:scaleX(0); transform-origin:left;
-  transition:transform 0.4s ease;
-}
-.nav-logo:hover::after { transform:scaleX(1); }
+.nav-logo { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:.2em; color:var(--gold); }
 .nav-links { display:flex; gap:3rem; list-style:none; }
 .nav-links a {
   font-family:'Share Tech Mono',monospace; font-size:.62rem;
   letter-spacing:.3em; color:var(--dim); text-decoration:none;
-  text-transform:uppercase; transition:color .3s;
-  position:relative; padding-bottom:2px;
+  text-transform:uppercase; transition:color .3s; position:relative; padding-bottom:2px;
 }
-.nav-links a::after {
-  content:''; position:absolute; bottom:0; left:0;
-  width:0; height:1px; background:var(--gold); transition:width .3s;
-}
+.nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--gold); transition:width .3s; }
 .nav-links a:hover { color:var(--gold); }
 .nav-links a:hover::after { width:100%; }
 
 /* ── HERO ── */
-#hero {
-  position:relative; height:100vh;
-  display:flex; align-items:flex-end;
-  overflow:hidden;
-}
+#hero { position:relative; height:100vh; display:flex; align-items:flex-end; overflow:hidden; }
 .hero-bg {
-  position:absolute; inset:0;
-  background-size:cover; background-position:center 35%;
+  position:absolute; inset:0; background-size:cover; background-position:center 35%;
   filter:brightness(.22) contrast(1.3) saturate(.5);
-  transform:scale(1.1);
-  will-change:transform;
+  transform:scale(1.1); will-change:transform;
 }
 .hero-noise {
   position:absolute; inset:0;
@@ -120,376 +85,148 @@ nav {
 }
 .hero-grad {
   position:absolute; inset:0;
-  background:
-    linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,.6) 35%, transparent 70%),
-    linear-gradient(to right, rgba(8,8,8,.5) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,.6) 35%, transparent 70%),
+              linear-gradient(to right, rgba(8,8,8,.5) 0%, transparent 60%);
 }
 .hero-lines {
   position:absolute; inset:0; pointer-events:none;
-  background:
-    linear-gradient(90deg, transparent 49.9%, rgba(201,168,76,0.03) 50%, transparent 50.1%),
-    linear-gradient(0deg, transparent 49.9%, rgba(201,168,76,0.03) 50%, transparent 50.1%);
+  background: linear-gradient(90deg, transparent 49.9%, rgba(201,168,76,0.03) 50%, transparent 50.1%),
+              linear-gradient(0deg, transparent 49.9%, rgba(201,168,76,0.03) 50%, transparent 50.1%);
   background-size: 80px 80px;
 }
-
-.hero-content {
-  position:relative; z-index:10;
-  padding:0 5rem 6rem;
-  max-width:900px;
-}
-
+.hero-content { position:relative; z-index:10; padding:0 5rem 6rem; max-width:900px; }
 .hero-tag {
   font-family:'Share Tech Mono',monospace; font-size:.65rem;
   letter-spacing:.45em; color:var(--gold); text-transform:uppercase;
-  margin-bottom:1.2rem; opacity:0;
-  animation: fadeSlideUp .6s .4s ease forwards;
+  margin-bottom:1.2rem; opacity:0; animation: fadeSlideUp .6s .4s ease forwards;
   display:flex; align-items:center; gap:1rem;
 }
-.hero-tag::before {
-  content:''; display:inline-block;
-  width:40px; height:1px; background:var(--gold);
-}
-
+.hero-tag::before { content:''; display:inline-block; width:40px; height:1px; background:var(--gold); }
 #glitch-title {
   font-family:'Bebas Neue',sans-serif;
   font-size: clamp(5.5rem,13vw,12rem);
-  line-height:.85;
-  position:relative;
+  line-height:.85; position:relative;
   opacity:0; animation: fadeSlideUp .8s .6s ease forwards;
 }
 #glitch-title .line2 { color:var(--gold); display:block; }
-
-#glitch-title::before,
-#glitch-title::after {
-  content: attr(data-text);
-  position:absolute; top:0; left:0;
-  width:100%; height:100%;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:inherit; line-height:inherit;
-  pointer-events:none;
+#glitch-title::before,#glitch-title::after {
+  content: attr(data-text); position:absolute; top:0; left:0;
+  width:100%; height:100%; font-family:'Bebas Neue',sans-serif;
+  font-size:inherit; line-height:inherit; pointer-events:none;
 }
-#glitch-title::before {
-  color:#0ff; clip-path:polygon(0 20%,100% 20%,100% 35%,0 35%);
-  animation:glitch1 4s infinite; opacity:.4;
-}
-#glitch-title::after {
-  color:#f0f; clip-path:polygon(0 60%,100% 60%,100% 75%,0 75%);
-  animation:glitch2 4s infinite; opacity:.4;
-}
-@keyframes glitch1 {
-  0%,90%,100%{transform:translate(0)} 91%{transform:translate(-4px,1px)}
-  92%{transform:translate(4px,-1px)} 93%{transform:translate(0)}
-  95%{transform:translate(-2px,2px)} 96%{transform:translate(2px,0)}
-}
-@keyframes glitch2 {
-  0%,88%,100%{transform:translate(0)} 89%{transform:translate(4px,2px)}
-  90%{transform:translate(-4px,-1px)} 91%{transform:translate(0)}
-  94%{transform:translate(3px,-2px)} 95%{transform:translate(-3px,1px)}
-}
-
-.hero-sub {
-  font-size:1rem; color:#777; margin-top:2rem;
-  letter-spacing:.06em; max-width:480px;
-  opacity:0; animation:fadeSlideUp .8s .85s ease forwards;
-}
-
-.hero-cta {
-  display:flex; align-items:center; gap:2rem; margin-top:2.5rem;
-  opacity:0; animation:fadeSlideUp .8s 1.05s ease forwards;
-}
-.plate {
-  display:inline-block; padding:.5rem 1.6rem;
-  background:var(--white); color:#111;
-  font-family:'Share Tech Mono',monospace; font-size:1.05rem;
-  letter-spacing:.2em; border:3px solid var(--gold);
-  position:relative; overflow:hidden;
-}
-.plate::after {
-  content:''; position:absolute; inset:0;
-  background:var(--gold); transform:translateX(-105%);
-  transition:transform .4s ease; z-index:-1;
-}
+#glitch-title::before { color:#0ff; clip-path:polygon(0 20%,100% 20%,100% 35%,0 35%); animation:glitch1 4s infinite; opacity:.4; }
+#glitch-title::after  { color:#f0f; clip-path:polygon(0 60%,100% 60%,100% 75%,0 75%); animation:glitch2 4s infinite; opacity:.4; }
+@keyframes glitch1 { 0%,90%,100%{transform:translate(0)} 91%{transform:translate(-4px,1px)} 92%{transform:translate(4px,-1px)} 93%{transform:translate(0)} 95%{transform:translate(-2px,2px)} 96%{transform:translate(2px,0)} }
+@keyframes glitch2 { 0%,88%,100%{transform:translate(0)} 89%{transform:translate(4px,2px)} 90%{transform:translate(-4px,-1px)} 91%{transform:translate(0)} 94%{transform:translate(3px,-2px)} 95%{transform:translate(-3px,1px)} }
+.hero-sub { font-size:1rem; color:#777; margin-top:2rem; letter-spacing:.06em; max-width:480px; opacity:0; animation:fadeSlideUp .8s .85s ease forwards; }
+.hero-cta { display:flex; align-items:center; gap:2rem; margin-top:2.5rem; opacity:0; animation:fadeSlideUp .8s 1.05s ease forwards; }
+.plate { display:inline-block; padding:.5rem 1.6rem; background:var(--white); color:#111; font-family:'Share Tech Mono',monospace; font-size:1.05rem; letter-spacing:.2em; border:3px solid var(--gold); position:relative; overflow:hidden; }
+.plate::after { content:''; position:absolute; inset:0; background:var(--gold); transform:translateX(-105%); transition:transform .4s ease; z-index:-1; }
 .plate:hover::after { transform:translateX(0); }
-.plate:hover { color:#111; }
-
-.rpm-wrap {
-  display:flex; align-items:center; gap:.8rem;
-  font-family:'Share Tech Mono',monospace; font-size:.6rem;
-  letter-spacing:.2em; color:var(--dim);
-}
-.rpm-bar {
-  display:flex; gap:3px;
-}
-.rpm-seg {
-  width:4px; height:20px;
-  background:var(--border);
-  border-radius:1px;
-  transition:background .1s;
-}
-
-.scroll-cue {
-  position:absolute; bottom:2.5rem; right:4rem; z-index:10;
-  display:flex; flex-direction:column; align-items:center; gap:.5rem;
-  font-family:'Share Tech Mono',monospace; font-size:.55rem;
-  letter-spacing:.35em; color:var(--dim); text-transform:uppercase;
-  animation:scrollPulse 2s infinite;
-}
-.scroll-cue-line {
-  width:1px; height:50px;
-  background:linear-gradient(to bottom, var(--gold), transparent);
-  animation:scrollLine 2s infinite;
-}
-@keyframes scrollLine { 0%{scaleY(0);opacity:0} 50%{opacity:1} 100%{transform:scaleY(1);opacity:0} }
+.rpm-wrap { display:flex; align-items:center; gap:.8rem; font-family:'Share Tech Mono',monospace; font-size:.6rem; letter-spacing:.2em; color:var(--dim); }
+.rpm-bar { display:flex; gap:3px; }
+.rpm-seg { width:4px; height:20px; background:var(--border); border-radius:1px; transition:background .1s; }
+.scroll-cue { position:absolute; bottom:2.5rem; right:4rem; z-index:10; display:flex; flex-direction:column; align-items:center; gap:.5rem; font-family:'Share Tech Mono',monospace; font-size:.55rem; letter-spacing:.35em; color:var(--dim); text-transform:uppercase; animation:scrollPulse 2s infinite; }
+.scroll-cue-line { width:1px; height:50px; background:linear-gradient(to bottom, var(--gold), transparent); }
 @keyframes scrollPulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+@keyframes fadeSlideUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
 
-@keyframes fadeSlideUp {
-  from{opacity:0;transform:translateY(32px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* ── COUNTER STRIP ── */
-#counters {
-  position:relative; z-index:10;
-  display:grid; grid-template-columns:repeat(5,1fr);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  background:var(--panel);
-}
-.counter-cell {
-  padding:2.2rem 2rem;
-  border-right:1px solid var(--border);
-  position:relative; overflow:hidden;
-  transition:background .4s;
-}
+/* ── COUNTERS ── */
+#counters { position:relative; z-index:10; display:grid; grid-template-columns:repeat(5,1fr); border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--panel); }
+.counter-cell { padding:2.2rem 2rem; border-right:1px solid var(--border); position:relative; overflow:hidden; transition:background .4s; }
 .counter-cell:last-child { border-right:none; }
-.counter-cell::before {
-  content:''; position:absolute; top:0; left:0;
-  width:100%; height:0;
-  background:linear-gradient(to bottom, rgba(201,168,76,.06), transparent);
-  transition:height .4s;
-}
 .counter-cell:hover { background:#141414; }
-.counter-cell:hover::before { height:100%; }
-.cc-bar {
-  position:absolute; bottom:0; left:0;
-  height:2px; width:0; background:var(--gold);
-  transition:width .6s ease;
-}
+.cc-bar { position:absolute; bottom:0; left:0; height:2px; width:0; background:var(--gold); transition:width .6s ease; }
 .counter-cell:hover .cc-bar { width:100%; }
-.cc-label {
-  font-family:'Share Tech Mono',monospace; font-size:.56rem;
-  letter-spacing:.3em; color:var(--dim); text-transform:uppercase;
-  margin-bottom:.6rem;
-}
-.cc-val {
-  font-family:'Bebas Neue',sans-serif; font-size:2.6rem; line-height:1;
-}
+.cc-label { font-family:'Share Tech Mono',monospace; font-size:.56rem; letter-spacing:.3em; color:var(--dim); text-transform:uppercase; margin-bottom:.6rem; }
+.cc-val { font-family:'Bebas Neue',sans-serif; font-size:2.6rem; line-height:1; }
 .cc-val .u { font-family:'Rajdhani',sans-serif; font-size:.9rem; color:var(--gold); margin-left:2px; font-weight:700; }
 .cc-note { font-size:.68rem; color:#3a3a3a; margin-top:.3rem; letter-spacing:.05em; }
 
-/* ── SECTIONS SHARED ── */
-.reveal {
-  opacity:0; transform:translateY(40px);
-  transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
-}
+/* ── REVEAL ANIMATIONS ── */
+.reveal { opacity:0; transform:translateY(40px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
 .reveal.vis { opacity:1; transform:translateY(0); }
-.reveal-left {
-  opacity:0; transform:translateX(-50px);
-  transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
-}
+.reveal-left { opacity:0; transform:translateX(-50px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
 .reveal-left.vis { opacity:1; transform:translateX(0); }
-.reveal-right {
-  opacity:0; transform:translateX(50px);
-  transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
-}
+.reveal-right { opacity:0; transform:translateX(50px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
 .reveal-right.vis { opacity:1; transform:translateX(0); }
 
-.eyebrow {
-  font-family:'Share Tech Mono',monospace; font-size:.6rem;
-  letter-spacing:.4em; color:var(--gold); text-transform:uppercase;
-  margin-bottom:1rem; display:flex; align-items:center; gap:1rem;
-}
+.eyebrow { font-family:'Share Tech Mono',monospace; font-size:.6rem; letter-spacing:.4em; color:var(--gold); text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:1rem; }
 .eyebrow::before { content:''; display:inline-block; width:24px; height:1px; background:var(--gold); }
-.sec-h {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(3rem,5.5vw,5rem); line-height:.9;
-  margin-bottom:2.5rem;
-}
+.sec-h { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,5.5vw,5rem); line-height:.9; margin-bottom:2.5rem; }
 .sec-h em { color:var(--gold); font-style:normal; }
 
-/* ── ENGINE SECTION ── */
-#engine {
-  display:grid; grid-template-columns:1fr 1fr;
-  min-height:90vh; border-bottom:1px solid var(--border);
-  position:relative; overflow:hidden;
-}
-.eng-img-wrap {
-  position:relative; overflow:hidden;
-}
-.eng-img-wrap img {
-  width:100%; height:100%; object-fit:cover;
-  filter:brightness(.65) contrast(1.15);
-  transition:transform .8s cubic-bezier(.16,1,.3,1), filter .5s;
-  display:block; will-change:transform;
-}
+/* ── ENGINE ── */
+#engine { display:grid; grid-template-columns:1fr 1fr; min-height:90vh; border-bottom:1px solid var(--border); }
+.eng-img-wrap { position:relative; overflow:hidden; }
+.eng-img-wrap img { width:100%; height:100%; object-fit:cover; filter:brightness(.65) contrast(1.15); transition:transform .8s cubic-bezier(.16,1,.3,1), filter .5s; display:block; }
 .eng-img-wrap:hover img { transform:scale(1.06); filter:brightness(.85); }
-.eng-img-overlay {
-  position:absolute; inset:0;
-  background:linear-gradient(to right, transparent 60%, var(--bg) 100%);
-}
-
-.eng-info {
-  background:var(--panel); padding:5rem 4rem;
-  display:flex; flex-direction:column; justify-content:center;
-  border-left:1px solid var(--border); position:relative; overflow:hidden;
-}
-.eng-info::before {
-  content:'EJ'; position:absolute; right:-1rem; bottom:-2rem;
-  font-family:'Bebas Neue',sans-serif; font-size:18rem; line-height:1;
-  color:rgba(255,255,255,.015); pointer-events:none; user-select:none;
-}
-
+.eng-img-overlay { position:absolute; inset:0; background:linear-gradient(to right, transparent 60%, var(--bg) 100%); }
+.eng-info { background:var(--panel); padding:5rem 4rem; display:flex; flex-direction:column; justify-content:center; border-left:1px solid var(--border); position:relative; overflow:hidden; }
+.eng-info::before { content:'EJ'; position:absolute; right:-1rem; bottom:-2rem; font-family:'Bebas Neue',sans-serif; font-size:18rem; line-height:1; color:rgba(255,255,255,.015); pointer-events:none; user-select:none; }
 .blist { display:flex; flex-direction:column; }
-.bi {
-  display:flex; gap:1.3rem; padding:1.2rem 0;
-  border-bottom:1px solid var(--border);
-  transition:padding-left .3s, background .2s;
-  position:relative;
-}
-.bi::before {
-  content:''; position:absolute; left:0; top:0;
-  width:2px; height:0; background:var(--gold);
-  transition:height .3s;
-}
+.bi { display:flex; gap:1.3rem; padding:1.2rem 0; border-bottom:1px solid var(--border); transition:padding-left .3s; position:relative; }
+.bi::before { content:''; position:absolute; left:0; top:0; width:2px; height:0; background:var(--gold); transition:height .3s; }
 .bi:hover::before { height:100%; }
 .bi:hover { padding-left:.8rem; }
 .bi:last-child { border-bottom:none; }
-.bi-n {
-  font-family:'Share Tech Mono',monospace; font-size:.56rem;
-  color:var(--gold); min-width:2.4rem; padding-top:.25rem;
-}
+.bi-n { font-family:'Share Tech Mono',monospace; font-size:.56rem; color:var(--gold); min-width:2.4rem; padding-top:.25rem; }
 .bi-t strong { display:block; font-size:1.05rem; font-weight:700; color:var(--white); margin-bottom:.15rem; }
 .bi-t span { font-size:.8rem; color:#666; line-height:1.55; }
 
-/* ── ECU SECTION ── */
-#ecu {
-  display:grid; grid-template-columns:1fr 1fr;
-  min-height:80vh; border-bottom:1px solid var(--border);
-}
-.ecu-info {
-  padding:5rem 4rem; display:flex; flex-direction:column;
-  justify-content:center; background:#0a0a0a;
-  position:relative; overflow:hidden;
-}
-.ecu-info::after {
-  content:''; position:absolute;
-  top:-100px; right:-100px;
-  width:300px; height:300px;
-  background:radial-gradient(circle, rgba(201,168,76,.04) 0%, transparent 70%);
-  pointer-events:none;
-}
+/* ── ECU ── */
+#ecu { display:grid; grid-template-columns:1fr 1fr; min-height:80vh; border-bottom:1px solid var(--border); }
+.ecu-info { padding:5rem 4rem; display:flex; flex-direction:column; justify-content:center; background:#0a0a0a; position:relative; overflow:hidden; }
+.ecu-info::after { content:''; position:absolute; top:-100px; right:-100px; width:300px; height:300px; background:radial-gradient(circle, rgba(201,168,76,.04) 0%, transparent 70%); pointer-events:none; }
 .ecu-img-wrap { overflow:hidden; position:relative; }
-.ecu-img-wrap img {
-  width:100%; height:100%; object-fit:cover;
-  filter:brightness(.6) contrast(1.25);
-  transition:transform .8s cubic-bezier(.16,1,.3,1), filter .5s;
-  display:block;
-}
+.ecu-img-wrap img { width:100%; height:100%; object-fit:cover; filter:brightness(.6) contrast(1.25); transition:transform .8s cubic-bezier(.16,1,.3,1), filter .5s; display:block; }
 .ecu-img-wrap:hover img { transform:scale(1.05); filter:brightness(.85); }
 
-.ecu-status {
-  display:inline-flex; align-items:center; gap:.8rem;
-  border:1px solid var(--gold); padding:.65rem 1.3rem;
-  margin-top:2rem; width:fit-content;
-  background:rgba(201,168,76,.04);
-  position:relative; overflow:hidden;
-}
-.ecu-status::after {
-  content:''; position:absolute; inset:0;
-  background:linear-gradient(90deg, transparent, rgba(201,168,76,.1), transparent);
-  transform:translateX(-100%);
-  animation:shimmer 3s infinite;
-}
+.ecu-status { display:inline-flex; align-items:center; gap:.8rem; border:1px solid var(--gold); padding:.65rem 1.3rem; margin-top:2rem; width:fit-content; background:rgba(201,168,76,.04); position:relative; overflow:hidden; }
+.ecu-status::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, transparent, rgba(201,168,76,.1), transparent); transform:translateX(-100%); animation:shimmer 3s infinite; }
 @keyframes shimmer { to{transform:translateX(100%)} }
 .status-dot { width:8px; height:8px; border-radius:50%; background:var(--gold); animation:statusBlink 1.4s infinite; }
 @keyframes statusBlink { 0%,100%{opacity:1;box-shadow:0 0 6px var(--gold)} 50%{opacity:.2;box-shadow:none} }
-.status-txt {
-  font-family:'Share Tech Mono',monospace; font-size:.65rem;
-  letter-spacing:.2em; color:var(--gold); text-transform:uppercase;
-}
+.status-txt { font-family:'Share Tech Mono',monospace; font-size:.65rem; letter-spacing:.2em; color:var(--gold); text-transform:uppercase; }
 
-/* Terminal typer */
-#terminal {
-  margin-top:2rem;
-  background:#050505; border:1px solid #1e1e1e;
-  padding:1.2rem 1.5rem; font-family:'Share Tech Mono',monospace;
-  font-size:.72rem; line-height:1.8; color:#5a5; max-width:420px;
-}
+#terminal { margin-top:2rem; background:#050505; border:1px solid #1e1e1e; padding:1.2rem 1.5rem; font-family:'Share Tech Mono',monospace; font-size:.72rem; line-height:1.8; color:#5a5; max-width:420px; }
 #terminal .t-line { display:block; }
 #terminal .t-line .prompt { color:var(--gold); margin-right:.5rem; }
-#terminal .cursor-blink {
-  display:inline-block; width:7px; height:13px;
-  background:var(--gold); vertical-align:middle;
-  animation:tblink .9s infinite;
-}
+#terminal .cursor-blink { display:inline-block; width:7px; height:13px; background:var(--gold); vertical-align:middle; animation:tblink .9s infinite; }
 @keyframes tblink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-.ecu-feats {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:.7rem; margin-top:1.5rem;
+/* ECU spec grid */
+.ecu-specs { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin-top:1.5rem; }
+.es { padding:1rem; border:1px solid var(--border); transition:border-color .3s, background .3s; }
+.es:hover { border-color:var(--gold); background:rgba(201,168,76,.04); }
+.es-t { font-family:'Share Tech Mono',monospace; font-size:.56rem; letter-spacing:.2em; color:var(--gold); text-transform:uppercase; margin-bottom:.3rem; }
+.es-d { font-size:.78rem; color:#666; line-height:1.45; }
+
+/* ECU link button */
+.ecu-link {
+  display:inline-flex; align-items:center; gap:.7rem;
+  margin-top:1.5rem; font-family:'Share Tech Mono',monospace;
+  font-size:.6rem; letter-spacing:.2em; color:var(--gold);
+  text-decoration:none; text-transform:uppercase;
+  border:1px solid rgba(201,168,76,.3); padding:.6rem 1.2rem;
+  transition:border-color .3s, background .3s;
 }
-.ef {
-  padding:1rem; border:1px solid var(--border);
-  transition:border-color .3s, background .3s, transform .3s;
-  transform-style:preserve-3d;
-}
-.ef:hover { border-color:var(--gold); background:rgba(201,168,76,.04); transform:translateY(-2px); }
-.ef-t { font-family:'Share Tech Mono',monospace; font-size:.56rem; letter-spacing:.2em; color:var(--gold); text-transform:uppercase; margin-bottom:.35rem; }
-.ef-d { font-size:.78rem; color:#666; line-height:1.45; }
+.ecu-link:hover { border-color:var(--gold); background:rgba(201,168,76,.06); }
+.ecu-link::after { content:'→'; transition:transform .2s; }
+.ecu-link:hover::after { transform:translateX(4px); }
 
 /* ── GALLERY ── */
-#gallery { padding:6rem 0; border-bottom:1px solid var(--border); position:relative; }
-.gal-head {
-  padding:0 5rem 4rem;
-  display:flex; align-items:flex-end; justify-content:space-between;
-}
-.gal-hint {
-  font-family:'Share Tech Mono',monospace; font-size:.58rem;
-  letter-spacing:.25em; color:var(--dim);
-}
-.gal-grid {
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  grid-template-rows:300px 300px;
-  gap:3px; padding:0 3px;
-}
-.gc {
-  overflow:hidden; position:relative; cursor:none;
-  transform-style:preserve-3d;
-}
-.gc img {
-  width:100%; height:100%; object-fit:cover;
-  filter:brightness(.65) saturate(.7) contrast(1.1);
-  transition:transform .7s cubic-bezier(.16,1,.3,1), filter .5s;
-  display:block; will-change:transform;
-}
+#gallery { padding:6rem 0; border-bottom:1px solid var(--border); }
+.gal-head { padding:0 5rem 4rem; display:flex; align-items:flex-end; justify-content:space-between; }
+.gal-hint { font-family:'Share Tech Mono',monospace; font-size:.58rem; letter-spacing:.25em; color:var(--dim); }
+.gal-grid { display:grid; grid-template-columns:repeat(12,1fr); grid-template-rows:300px 300px; gap:3px; padding:0 3px; }
+.gc { overflow:hidden; position:relative; cursor:none; }
+.gc img { width:100%; height:100%; object-fit:cover; filter:brightness(.65) saturate(.7) contrast(1.1); transition:transform .7s cubic-bezier(.16,1,.3,1), filter .5s; display:block; }
 .gc:hover img { transform:scale(1.1); filter:brightness(1) saturate(1.15) contrast(1.05); }
-.gc-ov {
-  position:absolute; inset:0;
-  background:linear-gradient(to top, rgba(8,8,8,.85) 0%, transparent 50%);
-  opacity:0; transition:opacity .4s;
-  display:flex; align-items:flex-end; padding:1rem 1.2rem;
-}
+.gc-ov { position:absolute; inset:0; background:linear-gradient(to top, rgba(8,8,8,.85) 0%, transparent 50%); opacity:0; transition:opacity .4s; display:flex; align-items:flex-end; padding:1rem 1.2rem; }
 .gc:hover .gc-ov { opacity:1; }
-.gc-lbl {
-  font-family:'Share Tech Mono',monospace; font-size:.58rem;
-  letter-spacing:.22em; color:var(--gold); text-transform:uppercase;
-}
-.gc-shine {
-  position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.08) 0%, transparent 60%);
-  opacity:0; transition:opacity .3s;
-}
+.gc-lbl { font-family:'Share Tech Mono',monospace; font-size:.58rem; letter-spacing:.22em; color:var(--gold); text-transform:uppercase; }
+.gc-shine { position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.08) 0%, transparent 60%); opacity:0; transition:opacity .3s; }
 .gc:hover .gc-shine { opacity:1; }
 .gc:nth-child(1){grid-column:1/5;grid-row:1}
 .gc:nth-child(2){grid-column:5/9;grid-row:1}
@@ -499,70 +236,100 @@ nav {
 .gc:nth-child(6){grid-column:8/10;grid-row:2}
 .gc:nth-child(7){grid-column:10/13;grid-row:2}
 
+/* ── RAUTOMECH PROMO ── */
+#rautomech {
+  border-bottom:1px solid var(--border);
+  display:grid; grid-template-columns:1fr 1fr;
+  min-height:60vh;
+}
+.rm-info {
+  padding:5rem 4rem; display:flex; flex-direction:column;
+  justify-content:center; background:#0a0a0a; position:relative; overflow:hidden;
+}
+.rm-info::before {
+  content:''; position:absolute; top:0; left:0; bottom:0; width:2px;
+  background:linear-gradient(to bottom, transparent, var(--gold), transparent);
+}
+.rm-logo-wrap {
+  display:flex; align-items:center; gap:1.5rem; margin-bottom:2rem;
+}
+.rm-logo-img {
+  height:52px; width:auto;
+  filter: brightness(0) invert(1);
+  opacity:.9;
+}
+.rm-logo-text {
+  font-family:'Bebas Neue',sans-serif; font-size:2rem;
+  letter-spacing:.12em; color:var(--white); line-height:1;
+}
+.rm-logo-text span { display:block; font-family:'Share Tech Mono',monospace; font-size:.55rem; letter-spacing:.3em; color:var(--dim); margin-top:.3rem; }
+.rm-desc { font-size:.95rem; color:#777; line-height:1.8; max-width:400px; margin-bottom:2rem; }
+.rm-services { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2rem; }
+.rm-tag {
+  font-family:'Share Tech Mono',monospace; font-size:.55rem;
+  letter-spacing:.18em; color:var(--dim); text-transform:uppercase;
+  border:1px solid var(--border); padding:.4rem .9rem;
+  transition:border-color .2s, color .2s;
+}
+.rm-tag:hover { border-color:var(--gold); color:var(--gold); }
+.rm-btn {
+  display:inline-flex; align-items:center; gap:.8rem;
+  font-family:'Share Tech Mono',monospace; font-size:.62rem;
+  letter-spacing:.25em; color:#111; text-decoration:none;
+  text-transform:uppercase; background:var(--gold);
+  padding:.75rem 1.8rem; transition:background .3s, letter-spacing .3s;
+  width:fit-content;
+}
+.rm-btn:hover { background:var(--gold2); letter-spacing:.35em; }
+.rm-contact { margin-top:1.2rem; font-family:'Share Tech Mono',monospace; font-size:.58rem; letter-spacing:.15em; color:var(--dim); }
+.rm-contact a { color:var(--gold); text-decoration:none; }
+.rm-img-side {
+  position:relative; overflow:hidden;
+  background:#0d0d0d;
+  display:flex; align-items:center; justify-content:center;
+}
+.rm-img-side img {
+  width:100%; height:100%; object-fit:cover;
+  filter:brightness(.4) contrast(1.1) saturate(.5);
+  transition:filter .5s;
+}
+.rm-img-side:hover img { filter:brightness(.55) contrast(1.1) saturate(.6); }
+.rm-img-badge {
+  position:absolute; bottom:2rem; left:2rem; right:2rem;
+  background:rgba(8,8,8,.9); border:1px solid var(--border);
+  padding:1.2rem 1.5rem; backdrop-filter:blur(10px);
+}
+.rm-badge-title { font-family:'Bebas Neue',sans-serif; font-size:1.2rem; color:var(--gold); letter-spacing:.1em; margin-bottom:.3rem; }
+.rm-badge-addr { font-family:'Share Tech Mono',monospace; font-size:.58rem; letter-spacing:.15em; color:var(--dim); line-height:1.8; }
+
 /* ── LIGHTBOX ── */
-#lb {
-  display:none; position:fixed; inset:0; z-index:5000;
-  background:rgba(4,4,4,.97); align-items:center; justify-content:center;
-  cursor:none;
-}
+#lb { display:none; position:fixed; inset:0; z-index:5000; background:rgba(4,4,4,.97); align-items:center; justify-content:center; cursor:none; }
 #lb.on { display:flex; }
-#lb-inner {
-  position:relative; max-width:90vw; max-height:90vh;
-  animation:lbIn .35s cubic-bezier(.16,1,.3,1);
-}
+#lb-inner { position:relative; max-width:90vw; max-height:90vh; animation:lbIn .35s cubic-bezier(.16,1,.3,1); }
 @keyframes lbIn { from{opacity:0;transform:scale(.88) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
 #lb-inner img { max-width:90vw; max-height:88vh; object-fit:contain; display:block; }
-#lb-x {
-  position:absolute; top:-2.5rem; right:0;
-  font-family:'Share Tech Mono',monospace; font-size:.65rem;
-  letter-spacing:.3em; color:var(--gold); cursor:none;
-  transition:letter-spacing .3s;
-}
+#lb-x { position:absolute; top:-2.5rem; right:0; font-family:'Share Tech Mono',monospace; font-size:.65rem; letter-spacing:.3em; color:var(--gold); cursor:none; transition:letter-spacing .3s; }
 #lb-x:hover { letter-spacing:.5em; }
-#lb-caption {
-  position:absolute; bottom:-2rem; left:0;
-  font-family:'Share Tech Mono',monospace; font-size:.58rem;
-  letter-spacing:.25em; color:var(--dim); text-transform:uppercase;
-}
+#lb-caption { position:absolute; bottom:-2rem; left:0; font-family:'Share Tech Mono',monospace; font-size:.58rem; letter-spacing:.25em; color:var(--dim); text-transform:uppercase; }
 
 /* ── FOOTER ── */
-footer {
-  padding:5rem;
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:3rem; border-top:1px solid var(--border);
-  position:relative; overflow:hidden;
-}
-footer::before {
-  content:'WRX'; position:absolute; bottom:-3rem; right:-1rem;
-  font-family:'Bebas Neue',sans-serif; font-size:20rem; line-height:1;
-  color:rgba(255,255,255,.012); pointer-events:none; user-select:none;
-}
-.f-logo {
-  font-family:'Bebas Neue',sans-serif; font-size:3rem;
-  letter-spacing:.1em; color:var(--gold); line-height:1;
-}
-.f-logo span {
-  display:block; font-family:'Share Tech Mono',monospace;
-  font-size:.58rem; letter-spacing:.3em; color:var(--dim); margin-top:.5rem;
-}
-.f-right {
-  display:flex; flex-direction:column; justify-content:flex-end;
-  align-items:flex-end;
-}
-.f-note {
-  font-family:'Share Tech Mono',monospace; font-size:.58rem;
-  letter-spacing:.18em; color:var(--dim); text-align:right; line-height:2.2;
-}
+footer { padding:5rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; border-top:1px solid var(--border); position:relative; overflow:hidden; }
+footer::before { content:'WRX'; position:absolute; bottom:-3rem; right:-1rem; font-family:'Bebas Neue',sans-serif; font-size:20rem; line-height:1; color:rgba(255,255,255,.012); pointer-events:none; user-select:none; }
+.f-logo { font-family:'Bebas Neue',sans-serif; font-size:3rem; letter-spacing:.1em; color:var(--gold); line-height:1; }
+.f-logo span { display:block; font-family:'Share Tech Mono',monospace; font-size:.58rem; letter-spacing:.3em; color:var(--dim); margin-top:.5rem; }
+.f-right { display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-end; }
+.f-note { font-family:'Share Tech Mono',monospace; font-size:.58rem; letter-spacing:.18em; color:var(--dim); text-align:right; line-height:2.2; }
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav{padding:1rem 1.5rem;}
   .nav-links{display:none;}
   #counters{grid-template-columns:repeat(2,1fr);}
-  #engine,#ecu{grid-template-columns:1fr;}
-  .eng-img-wrap,.ecu-img-wrap{height:55vw;}
+  #engine,#ecu,#rautomech{grid-template-columns:1fr;}
+  .eng-img-wrap,.ecu-img-wrap,.rm-img-side{height:55vw;}
   .ecu-img-wrap{order:-1;}
-  .eng-info,.ecu-info{padding:3rem 2rem;}
+  .rm-img-side{order:-1;}
+  .eng-info,.ecu-info,.rm-info{padding:3rem 2rem;}
   h1{font-size:4.5rem;}
   .hero-content{padding:0 2rem 4rem;}
   .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
@@ -586,6 +353,7 @@ footer::before {
     <li><a href="#engine">Engine</a></li>
     <li><a href="#ecu">ECU</a></li>
     <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#rautomech">Workshop</a></li>
   </ul>
 </nav>
 
@@ -595,12 +363,9 @@ footer::before {
   <div class="hero-noise"></div>
   <div class="hero-lines"></div>
   <div class="hero-grad"></div>
-
   <div class="hero-content">
     <p class="hero-tag">Street Performance Build &nbsp;·&nbsp; Gauteng ZA</p>
-    <div id="glitch-title" data-text="BUGEYE&#10;WRX">
-      BUGEYE<span class="line2">WRX</span>
-    </div>
+    <div id="glitch-title" data-text="BUGEYE&#10;WRX">BUGEYE<span class="line2">WRX</span></div>
     <p class="hero-sub">GD chassis &nbsp;·&nbsp; 2.0L head on 2.5L STI block &nbsp;·&nbsp; EMU Black standalone ECU</p>
     <div class="hero-cta">
       <div class="plate">RFR695 GP</div>
@@ -610,44 +375,16 @@ footer::before {
       </div>
     </div>
   </div>
-  <div class="scroll-cue">
-    <div class="scroll-cue-line"></div>
-    SCROLL
-  </div>
+  <div class="scroll-cue"><div class="scroll-cue-line"></div>SCROLL</div>
 </section>
 
 <!-- COUNTERS -->
 <section id="counters">
-  <div class="counter-cell reveal">
-    <div class="cc-label">Year</div>
-    <div class="cc-val" data-target="2002" data-suffix="">2002<span class="u">GD</span></div>
-    <div class="cc-note">Bugeye generation</div>
-    <div class="cc-bar"></div>
-  </div>
-  <div class="counter-cell reveal">
-    <div class="cc-label">Block</div>
-    <div class="cc-val">2.5<span class="u">L STI</span></div>
-    <div class="cc-note">EJ257 bottom end</div>
-    <div class="cc-bar"></div>
-  </div>
-  <div class="counter-cell reveal">
-    <div class="cc-label">Head</div>
-    <div class="cc-val">2.0<span class="u">L</span></div>
-    <div class="cc-note">EJ205 head spec</div>
-    <div class="cc-bar"></div>
-  </div>
-  <div class="counter-cell reveal">
-    <div class="cc-label">ECU</div>
-    <div class="cc-val">EMU<span class="u">Black</span></div>
-    <div class="cc-note">Full standalone</div>
-    <div class="cc-bar"></div>
-  </div>
-  <div class="counter-cell reveal">
-    <div class="cc-label">Drive</div>
-    <div class="cc-val">AWD<span class="u">4×4</span></div>
-    <div class="cc-note">Street tuned</div>
-    <div class="cc-bar"></div>
-  </div>
+  <div class="counter-cell reveal"><div class="cc-label">Year</div><div class="cc-val">2002<span class="u">GD</span></div><div class="cc-note">Bugeye generation</div><div class="cc-bar"></div></div>
+  <div class="counter-cell reveal"><div class="cc-label">Block</div><div class="cc-val">2.5<span class="u">L STI</span></div><div class="cc-note">EJ257 bottom end</div><div class="cc-bar"></div></div>
+  <div class="counter-cell reveal"><div class="cc-label">Head</div><div class="cc-val">2.0<span class="u">L</span></div><div class="cc-note">EJ205 head spec</div><div class="cc-bar"></div></div>
+  <div class="counter-cell reveal"><div class="cc-label">Boost</div><div class="cc-val">1.5<span class="u">BAR</span></div><div class="cc-note">~21.8 PSI street tune</div><div class="cc-bar"></div></div>
+  <div class="counter-cell reveal"><div class="cc-label">ECU</div><div class="cc-val">EMU<span class="u">Black</span></div><div class="cc-note">Full standalone</div><div class="cc-bar"></div></div>
 </section>
 
 <!-- ENGINE -->
@@ -660,10 +397,10 @@ footer::before {
     <p class="eyebrow">01 · Powertrain</p>
     <h2 class="sec-h">THE <em>HEART</em><br>OF THE BUILD</h2>
     <div class="blist">
-      <div class="bi"><span class="bi-n">[01]</span><div class="bi-t"><strong>2.5L STI Bottom End</strong><span>EJ257 block giving extra displacement and bottom-end strength for street performance duties.</span></div></div>
-      <div class="bi"><span class="bi-n">[02]</span><div class="bi-t"><strong>2.0L Head Specification</strong><span>EJ205 head on top for optimised combustion geometry and better top-end breathing.</span></div></div>
-      <div class="bi"><span class="bi-n">[03]</span><div class="bi-t"><strong>Turbocharged</strong><span>Forced induction keeping the signature flat-four boxer character with boosted output.</span></div></div>
-      <div class="bi"><span class="bi-n">[04]</span><div class="bi-t"><strong>Front Mount Intercooler</strong><span>FMIC for reliable charge cooling and consistent power in Gauteng summer heat.</span></div></div>
+      <div class="bi"><span class="bi-n">[01]</span><div class="bi-t"><strong>2.5L STI Bottom End</strong><span>EJ257 block giving the extra displacement and bottom-end strength needed for street performance duties.</span></div></div>
+      <div class="bi"><span class="bi-n">[02]</span><div class="bi-t"><strong>2.0L Head Specification</strong><span>EJ205 head fitted on top for optimised combustion geometry and better top-end breathing characteristics.</span></div></div>
+      <div class="bi"><span class="bi-n">[03]</span><div class="bi-t"><strong>Turbocharged</strong><span>Forced induction keeping that signature flat-four boxer character with boosted output across the rev range.</span></div></div>
+      <div class="bi"><span class="bi-n">[04]</span><div class="bi-t"><strong>Top Mount STI Intercooler</strong><span>Standard STI top-mount intercooler sitting on the engine, cooling the charge air through the bonnet scoop.</span></div></div>
       <div class="bi"><span class="bi-n">[05]</span><div class="bi-t"><strong>MOMO Steering Wheel</strong><span>Sport wheel keeping the driver connected and precise at all times on the street.</span></div></div>
     </div>
   </div>
@@ -674,11 +411,13 @@ footer::before {
   <div class="ecu-info reveal-left">
     <p class="eyebrow">02 · Engine Management</p>
     <h2 class="sec-h">EMU<br><em>BLACK</em></h2>
-    <p style="color:#777;font-size:.92rem;line-height:1.8;max-width:380px;">Recently installed full standalone management. Complete tunable control over fuelling, ignition, boost and all sensor inputs — mapped over USB-C via laptop.</p>
+    <p style="color:#777;font-size:.92rem;line-height:1.8;max-width:400px;">
+      The EMU Black by Ecumaster is a class-leading standalone engine management system designed for the most advanced and complex engines. Recently installed on the build — it replaces the factory ECU entirely, giving full tunable control over fuelling, ignition, boost, and all sensor inputs. Supports 1–12 cylinder engines including drive-by-wire and VVT. Free firmware upgrades continue to expand its capabilities over time.
+    </p>
 
     <div class="ecu-status">
       <div class="status-dot"></div>
-      <span class="status-txt">System Active &nbsp;·&nbsp; S/N 053244600188</span>
+      <span class="status-txt">System Active &nbsp;·&nbsp; EMU Black V3</span>
     </div>
 
     <div id="terminal">
@@ -687,12 +426,16 @@ footer::before {
       <span class="t-line"><span class="prompt">&gt;</span> <span id="tLine3"></span><span class="cursor-blink"></span></span>
     </div>
 
-    <div class="ecu-feats">
-      <div class="ef"><div class="ef-t">Fuelling</div><div class="ef-d">Full 3D maps, wideband O₂ closed loop</div></div>
-      <div class="ef"><div class="ef-t">Ignition</div><div class="ef-d">Individual cylinder timing control</div></div>
-      <div class="ef"><div class="ef-t">Boost</div><div class="ef-d">Closed-loop, gear-based tables</div></div>
-      <div class="ef"><div class="ef-t">Interface</div><div class="ef-d">USB-C, real-time logging & live tune</div></div>
+    <div class="ecu-specs">
+      <div class="es"><div class="es-t">Fuelling</div><div class="es-d">Sequential up to 8 injectors, VE-based speed density, wideband O₂ closed loop (LSU 4.2 / 4.9 built-in)</div></div>
+      <div class="es"><div class="es-t">Ignition</div><div class="es-d">6 direct coil outputs, individual cylinder timing, knock control on 2 inputs</div></div>
+      <div class="es"><div class="es-t">Boost Control</div><div class="es-d">Closed-loop boost, gear-based tables, improved algorithm from EMU PRO in V3</div></div>
+      <div class="es"><div class="es-t">Hardware</div><div class="es-d">IP60 CNC aluminium enclosure, −40 to +105°C, 6–22V operation, reverse battery protected</div></div>
+      <div class="es"><div class="es-t">Inputs / Outputs</div><div class="es-d">9 analog inputs, 2 EGT, flex fuel, 6 injector + 6 ignition + 6 aux outputs</div></div>
+      <div class="es"><div class="es-t">Interface</div><div class="es-d">USB-C connection, real-time data logging, live tune via PC client software, CAN BUS 2.0B</div></div>
     </div>
+
+    <a class="ecu-link" href="https://www.ecumaster.com/products/emu-black/" target="_blank" rel="noopener">Official Ecumaster Page</a>
   </div>
   <div class="ecu-img-wrap reveal-right">
     <img id="ecuImg" src="" alt="EMU Black ECU">
@@ -711,6 +454,47 @@ footer::before {
   <div class="gal-grid" id="gal"></div>
 </section>
 
+<!-- RAUTOMECH PROMO -->
+<section id="rautomech">
+  <div class="rm-info reveal-left">
+    <p class="eyebrow">04 · Trusted Workshop</p>
+    <div class="rm-logo-wrap">
+      <img class="rm-logo-img" src="https://rautomech.co.za/data/CompanyImage/Logo/_CompanyLogo.png" alt="Rautomech Logo" onerror="this.style.display='none'">
+      <div class="rm-logo-text">
+        Rautomech
+        <span>Mechanical &amp; Auto Electrical Repairs</span>
+      </div>
+    </div>
+    <p class="rm-desc">
+      The workshop behind this build. Rautomech specialises in mechanical and auto electrical repairs with a strong focus on Mercedes-Benz — but their expertise spans all makes. Expert technicians, quality parts, and honest service at 1126 Steve Biko Road, Gezina, Pretoria.
+    </p>
+    <div class="rm-services">
+      <span class="rm-tag">Engine Diagnostics</span>
+      <span class="rm-tag">Auto Electrical</span>
+      <span class="rm-tag">Brake Services</span>
+      <span class="rm-tag">MB Specialist</span>
+      <span class="rm-tag">Performance Builds</span>
+      <span class="rm-tag">Routine Maintenance</span>
+    </div>
+    <a class="rm-btn" href="https://rautomech.co.za/" target="_blank" rel="noopener">Visit Rautomech</a>
+    <div class="rm-contact">
+      📞 <a href="tel:0123351238">012 335 1238</a> &nbsp;·&nbsp;
+      ✉ <a href="mailto:911rautomech@gmail.com">911rautomech@gmail.com</a>
+    </div>
+  </div>
+  <div class="rm-img-side reveal-right">
+    <img id="rmImg" src="" alt="Rautomech workshop">
+    <div class="rm-img-badge">
+      <div class="rm-badge-title">Rautomech Workshop</div>
+      <div class="rm-badge-addr">
+        1126 Steve Biko Road, Gezina<br>
+        Wonderboom South, Pretoria 0084
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="f-logo reveal-left">
     RFR695GP
@@ -719,7 +503,7 @@ footer::before {
   <div class="f-right reveal-right">
     <div class="f-note">
       2.5L STI Block · 2.0L Head Spec<br>
-      EMU Black Standalone ECU<br>
+      EMU Black Standalone ECU · 1.5 Bar Boost<br>
       Street Tuned · Built Not Bought
     </div>
   </div>
@@ -741,16 +525,17 @@ const IMGS = {"hero": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA
 document.getElementById('heroBg').style.backgroundImage = `url('${IMGS.hero}')`;
 document.getElementById('engImg').src = IMGS.engine;
 document.getElementById('ecuImg').src = IMGS.ecu;
+document.getElementById('rmImg').src = IMGS.rautomech;
 
 /* ── Gallery build ── */
 const galData = [
-  {key:'hangar',   label:'Front · Hangar'},
-  {key:'hero',     label:'B&W · Driveway'},
-  {key:'night',    label:'Night · Street'},
-  {key:'driveway', label:'Day · Driveway'},
-  {key:'rautomech',label:'Rautomech · Night'},
-  {key:'interior', label:'Interior · MOMO'},
-  {key:'engineout',label:'Engine · Out'},
+  {key:'hangar',    label:'Front · Hangar'},
+  {key:'hero',      label:'B&W · Driveway'},
+  {key:'night',     label:'Night · Street'},
+  {key:'driveway',  label:'Day · Driveway'},
+  {key:'rautomech', label:'Rautomech · Night'},
+  {key:'interior',  label:'Interior · MOMO'},
+  {key:'engineout', label:'Engine · Out'},
 ];
 const gal = document.getElementById('gal');
 galData.forEach(d => {
@@ -762,158 +547,64 @@ galData.forEach(d => {
   div.addEventListener('click', () => openLb(d.key, d.label));
   div.addEventListener('mousemove', e => {
     const r = div.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width * 100).toFixed(1);
-    const y = ((e.clientY - r.top) / r.height * 100).toFixed(1);
-    div.querySelector('.gc-shine').style.setProperty('--mx', x + '%');
-    div.querySelector('.gc-shine').style.setProperty('--my', y + '%');
+    div.querySelector('.gc-shine').style.setProperty('--mx', ((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+    div.querySelector('.gc-shine').style.setProperty('--my', ((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
   });
   gal.appendChild(div);
 });
 
 /* ── Custom cursor ── */
-const cur = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-function animCursor() {
-  cur.style.left = mx + 'px';
-  cur.style.top = my + 'px';
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top = ry + 'px';
-  requestAnimationFrame(animCursor);
-}
-animCursor();
-document.querySelectorAll('a, .gc, .plate, #lb-x, .ef, .bi').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cur.style.transform = 'translate(-50%,-50%) scale(2.5)';
-    ring.style.width = '60px';
-    ring.style.height = '60px';
-  });
-  el.addEventListener('mouseleave', () => {
-    cur.style.transform = 'translate(-50%,-50%) scale(1)';
-    ring.style.width = '40px';
-    ring.style.height = '40px';
-  });
+const cur = document.getElementById('cursor'), ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+(function animCursor(){ cur.style.left=mx+'px'; cur.style.top=my+'px'; rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animCursor); })();
+document.querySelectorAll('a,.gc,.plate,.rm-btn,.bi,.es').forEach(el => {
+  el.addEventListener('mouseenter', () => { cur.style.transform='translate(-50%,-50%) scale(2.5)'; ring.style.width='60px'; ring.style.height='60px'; });
+  el.addEventListener('mouseleave', () => { cur.style.transform='translate(-50%,-50%) scale(1)'; ring.style.width='40px'; ring.style.height='40px'; });
 });
 
-/* ── Particle canvas ── */
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
-let W, H, particles = [];
-function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
-resize();
-window.addEventListener('resize', resize);
-
-function mkParticle() {
-  return {
-    x: Math.random() * W,
-    y: Math.random() * H,
-    vx: (Math.random() - .5) * .3,
-    vy: -Math.random() * .5 - .1,
-    life: 1, decay: Math.random() * .003 + .001,
-    size: Math.random() * 1.5 + .3,
-    gold: Math.random() > .85,
-  };
-}
-for(let i = 0; i < 80; i++) particles.push(mkParticle());
-
-function drawParticles() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach((p, i) => {
-    p.x += p.vx; p.y += p.vy; p.life -= p.decay;
-    if(p.life <= 0) particles[i] = mkParticle();
-    ctx.globalAlpha = p.life * 0.5;
-    ctx.fillStyle = p.gold ? '#c9a84c' : '#ffffff';
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-    ctx.fill();
-  });
-  ctx.globalAlpha = 1;
-  requestAnimationFrame(drawParticles);
-}
-drawParticles();
+/* ── Particles ── */
+const canvas=document.getElementById('particleCanvas'), ctx=canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
+resize(); window.addEventListener('resize',resize);
+function mkP(){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:-Math.random()*.5-.1,life:1,decay:Math.random()*.003+.001,size:Math.random()*1.5+.3,gold:Math.random()>.85};}
+for(let i=0;i<80;i++) particles.push(mkP());
+(function draw(){ ctx.clearRect(0,0,W,H); particles.forEach((p,i)=>{p.x+=p.vx;p.y+=p.vy;p.life-=p.decay; if(p.life<=0) particles[i]=mkP(); ctx.globalAlpha=p.life*.5; ctx.fillStyle=p.gold?'#c9a84c':'#ffffff'; ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();}); ctx.globalAlpha=1; requestAnimationFrame(draw); })();
 
 /* ── Hero parallax ── */
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  const bg = document.getElementById('heroBg');
-  if(bg) bg.style.transform = `scale(1.1) translateY(${y * 0.3}px)`;
-});
+window.addEventListener('scroll',()=>{ const bg=document.getElementById('heroBg'); if(bg) bg.style.transform=`scale(1.1) translateY(${scrollY*.3}px)`; });
 
-/* ── RPM bar animation ── */
-const rpmBar = document.getElementById('rpmBar');
-for(let i = 0; i < 16; i++) {
-  const seg = document.createElement('div');
-  seg.className = 'rpm-seg';
-  rpmBar.appendChild(seg);
-}
-const segs = rpmBar.querySelectorAll('.rpm-seg');
-let rpmVal = 0, rpmDir = 1;
-setInterval(() => {
-  rpmVal += rpmDir * (Math.random() * 2 + 1);
-  if(rpmVal >= 16) rpmDir = -1;
-  if(rpmVal <= 0) rpmDir = 1;
-  const filled = Math.round(rpmVal);
-  segs.forEach((s, i) => {
-    const active = i < filled;
-    s.style.background = active
-      ? (i < 10 ? '#c9a84c' : i < 13 ? '#f0a020' : '#cc2020')
-      : 'var(--border)';
-    s.style.boxShadow = active && i < filled ? `0 0 4px ${i < 10 ? '#c9a84c' : '#cc2020'}` : 'none';
-  });
-}, 120);
+/* ── RPM bar ── */
+const rpmBar=document.getElementById('rpmBar');
+for(let i=0;i<16;i++){const s=document.createElement('div');s.className='rpm-seg';rpmBar.appendChild(s);}
+const segs=rpmBar.querySelectorAll('.rpm-seg');
+let rpmVal=0,rpmDir=1;
+setInterval(()=>{
+  rpmVal+=rpmDir*(Math.random()*2+1);
+  if(rpmVal>=16)rpmDir=-1; if(rpmVal<=0)rpmDir=1;
+  const f=Math.round(rpmVal);
+  segs.forEach((s,i)=>{const on=i<f; s.style.background=on?(i<10?'#c9a84c':i<13?'#f0a020':'#cc2020'):'var(--border)'; s.style.boxShadow=on?`0 0 4px ${i<10?'#c9a84c':'#cc2020'}`:'none';});
+},120);
 
 /* ── Scroll reveal ── */
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }});
-}, {threshold:0.08});
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
-  el.style.transitionDelay = (i % 5) * 0.1 + 's';
-  obs.observe(el);
-});
+const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach((el,i)=>{ el.style.transitionDelay=(i%5)*.1+'s'; obs.observe(el); });
 
 /* ── Terminal typer ── */
-const lines = [
-  { id:'tLine1', text:'ECU_LINK: ESTABLISHED' },
-  { id:'tLine2', text:'BOOST_TARGET: 18.5 PSI' },
-  { id:'tLine3', text:'MAP_STATUS: TUNED_OK' },
+const tLines=[
+  {id:'tLine1',text:'ECU_LINK: ESTABLISHED'},
+  {id:'tLine2',text:'BOOST_TARGET: 1.5 BAR (21.8 PSI)'},
+  {id:'tLine3',text:'TUNE_STATUS: STREET_MAP_OK'},
 ];
-function typeText(elId, text, delay, cb) {
-  const el = document.getElementById(elId);
-  if(!el) return;
-  let i = 0;
-  setTimeout(() => {
-    const t = setInterval(() => {
-      el.textContent = text.slice(0, ++i);
-      if(i >= text.length) { clearInterval(t); if(cb) cb(); }
-    }, 45);
-  }, delay);
-}
-const termObs = new IntersectionObserver(entries => {
-  if(entries[0].isIntersecting) {
-    typeText('tLine1', lines[0].text, 200, () =>
-      typeText('tLine2', lines[1].text, 400, () =>
-        typeText('tLine3', lines[2].text, 400)));
-    termObs.disconnect();
-  }
-}, {threshold:.5});
-const term = document.getElementById('terminal');
-if(term) termObs.observe(term);
+function typeText(id,text,delay,cb){const el=document.getElementById(id);if(!el)return;let i=0;setTimeout(()=>{const t=setInterval(()=>{el.textContent=text.slice(0,++i);if(i>=text.length){clearInterval(t);if(cb)cb();}},45);},delay);}
+const termObs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){typeText(tLines[0].id,tLines[0].text,200,()=>typeText(tLines[1].id,tLines[1].text,400,()=>typeText(tLines[2].id,tLines[2].text,400)));termObs.disconnect();}},{threshold:.5});
+const term=document.getElementById('terminal');if(term)termObs.observe(term);
 
 /* ── Lightbox ── */
-function openLb(key, label) {
-  document.getElementById('lb-img').src = IMGS[key];
-  document.getElementById('lb-caption').textContent = label;
-  document.getElementById('lb').classList.add('on');
-  document.body.style.overflow = 'hidden';
-}
-function closeLb() {
-  document.getElementById('lb').classList.remove('on');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeLb(); });
+function openLb(key,label){document.getElementById('lb-img').src=IMGS[key];document.getElementById('lb-caption').textContent=label;document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden';}
+function closeLb(){document.getElementById('lb').classList.remove('on');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
 </script>
 </body>
 </html>
